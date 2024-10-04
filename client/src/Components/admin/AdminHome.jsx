@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import UserDetailsModal from './UserDetailsModal';
 import CreateUserModal from './CreateUserModal';
-import './Admin.css';
+import './AdminHome.css';
 import defaultImg from '../../../public/images/profile.jpg';
 
 const url = `http://localhost:3000`;
@@ -18,7 +18,6 @@ const AdminHome = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('hjhjfggyhj');
     fetchUserData();
   }, []);
 
@@ -26,9 +25,13 @@ const AdminHome = () => {
     try {
       const response = await axios.post(`${url}/admin/allusers`);
       setUserData(response.data.userData);
-      console.log(response.data.userData); // Add this line to check userData
     } catch (error) {
       console.error('Error fetching user data:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Failed to fetch user data!',
+      });
     }
   };
 
@@ -36,28 +39,33 @@ const AdminHome = () => {
     try {
       await axios.post(`${url}/admin/deleteUser`, { userId });
       setUserData(userData.filter(user => user._id !== userId));
+      Swal.fire(
+        'Deleted!',
+        'The user has been deleted.',
+        'success'
+      );
     } catch (err) {
       console.log(err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to delete the user.',
+      });
     }
   };
 
   const handleDelete = (userId) => {
     Swal.fire({
       title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      text: "This action cannot be undone!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#ff6b6b',
+      cancelButtonColor: '#a3a3a3',
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
         deleteUser(userId);
-        Swal.fire(
-          'Deleted!',
-          'The user has been deleted.',
-          'success'
-        );
       }
     });
   };
@@ -87,30 +95,34 @@ const AdminHome = () => {
   };
 
   return (
-    <div className="container-xl">
+    <div className="container-xl admin-home-container">
       <div className="table-responsive">
         <div className="table-wrapper">
           <div className="table-title">
             <div className="row">
-              <div className="col-sm-5">
+              <div className="col-sm-6">
                 <h2>User <b>Management</b></h2>
               </div>
-              <div className="col-sm-7">
-                <button onClick={logout} className='btn bg-danger text-light'>Logout</button>
-                <button onClick={handleShowCreateUser} className="btn btn-secondary">
-                  <i className="material-icons">&#xE147;</i> <span>Add New User</span>
-                </button>
+              <div className="col-sm-6 d-flex justify-content-between align-items-center">
                 <input
-                  className="btn btn-secondary"
                   type="text"
+                  className="form-control search-input"
                   placeholder="Search by name or email"
                   value={searchQuery}
                   onChange={handleSearch}
                 />
+                <div className="button-group">
+                  <button onClick={handleShowCreateUser} className="btn btn-create ms-3" title='Add new user'>
+                    <i className="material-icons">&#xE147;</i> <span></span>
+                  </button>
+                  <button onClick={logout} className='btn btn-logout ms-3' title='Logout Admin'>
+                    <i className="material-icons">&#xE879;</i> 
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-          <table className="table table-striped table-hover">
+          <table className="table table-striped table-hover girlish-table">
             <thead>
               <tr>
                 <th>#</th>
@@ -120,32 +132,34 @@ const AdminHome = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredUsers.map((user, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>
-                    <p role='button'>
+              {filteredUsers.length > 0 ? (
+                filteredUsers.map((user, index) => (
+                  <tr key={user._id}>
+                    <td>{index + 1}</td>
+                    <td className="user-name">
                       <img
-                        src={user.profileImage ? `../../../public/uploads/${user.profileImage}` : defaultImg}
-                        className="avatar"
-                        width={50}
-                        height={50}
+                        src={user.profileImage ? `${url}/uploads/${user.profileImage}` : defaultImg}
+                        className="avatar me-2"
                         alt="Profile"
                       />
                       {user.name}
-                    </p>
-                  </td>
-                  <td>{user.email}</td>
-                  <td className='d-flex pb-5'>
-                    <div onClick={() => handleShowUserDetails(user)} role='button' className="settings text-primary" title="Settings" data-toggle="tooltip">
-                      <i className="material-icons">&#xE8B8;</i>
-                    </div>
-                    <div onClick={() => handleDelete(user._id)} role='button' className="delete text-danger" title="Delete" data-toggle="tooltip">
-                      <i className="material-icons">&#xE5C9;</i>
-                    </div>
-                  </td>
+                    </td>
+                    <td>{user.email}</td>
+                    <td className='d-flex justify-content-center align-items-center'>
+                      <div onClick={() => handleShowUserDetails(user)} role='button' className="action-icon me-3" title="View Details">
+                        <i className="material-icons">edit</i>
+                      </div>
+                      <div onClick={() => handleDelete(user._id)} role='button' className="action-icon delete-icon" title="Delete User">
+                        <i className="material-icons">&#xE872;</i>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4" className="text-center">No users found.</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>

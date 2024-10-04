@@ -1,163 +1,101 @@
-body {
-    background-color: #f9f9fa
-}
-
-.padding {
-    padding: 3rem !important
-}
-
-.user-card-full {
+/* Profile container */
+.profile-container {
+    padding: 20px;
+    background-color: #f9f3f5;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Card */
+  .card {
+    background: linear-gradient(135deg, #ffccd5, #ffc1e3);
+    border-radius: 20px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+  }
+  
+  .user-card {
+    border-radius: 20px;
     overflow: hidden;
-}
-
-.card {
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
-    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
-    border: none;
-    margin-bottom: 30px;
-}
-
-.m-r-0 {
-    margin-right: 0px;
-}
-
-.m-l-0 {
-    margin-left: 0px;
-}
-
-.user-card-full .user-profile {
-    border-radius: 5px 0 0 5px;
-}
-
-.bg-c-lite-green {
-        background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
-    background: linear-gradient(to right, #ee5a6f, #f29263);
-}
-
-.user-profile {
-    padding: 20px 0;
-}
-
-.card-block {
-    padding: 1.25rem;
-}
-
-.m-b-25 {
-    margin-bottom: 25px;
-}
-
-.img-radius {
-    border-radius: 5px;
-}
-
-h6 {
-    font-size: 14px;
-}
-
-.card .card-block p {
-    line-height: 25px;
-}
-
-@media only screen and (min-width: 1400px){
-p {
-    font-size: 14px;
-}
-}
-
-.card-block {
-    padding: 1.25rem;
-}
-
-.b-b-default {
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.m-b-20 {
-    margin-bottom: 20px;
-}
-
-.p-b-5 {
-    padding-bottom: 5px !important;
-}
-
-.card .card-block p {
-    line-height: 25px;
-}
-
-.m-b-10 {
-    margin-bottom: 10px;
-}
-
-.text-muted {
-    color: #919aa3 !important;
-}
-
-.b-b-default {
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.f-w-600 {
-    font-weight: 600;
-}
-
-.m-b-20 {
-    margin-bottom: 20px;
-}
-
-.m-t-40 {
-    margin-top: 20px;
-}
-
-.p-b-5 {
-    padding-bottom: 5px !important;
-}
-
-.m-b-10 {
-    margin-bottom: 10px;
-}
-
-.m-t-40 {
-    margin-top: 20px;
-}
-
-.user-card-full .social-link li {
-    display: inline-block;
-}
-
-.user-card-full .social-link li a {
-    font-size: 20px;
-    margin: 0 10px 0 0;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-
-
-.center-content {
-
-    content: center;
+  }
+  
+  .profile-left {
+    background: #fcb1d4;
+    padding: 20px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-}
-.user-profile .custom-file-upload {
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-    background-color: #00bfa5;
+  }
+  
+  .profile-block {
+    padding: 10px;
+  }
+  
+  .profile-img-container {
+    margin-bottom: 15px;
+  }
+  
+  .profile-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 5px solid #fff;
+    border-radius: 50%;
+  }
+  
+  .custom-file-upload {
+    background-color: #ff6f91;
     color: white;
-    border-radius: 4px;
-    margin-top: 10px;
-}
-
-.user-profile .custom-file-upload i {
-    margin-right: 5px;
-}
-
-.user-profile input[type="file"] {
-    display: none;
-}
-
-.user-profile .custom-file-upload:hover {
-    background-color: #00a992;
-}
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .custom-file-upload:hover {
+    background-color: #ff5c80;
+  }
+  
+  .profile-right {
+    padding: 30px;
+  }
+  
+  .section-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff6f91;
+    margin-bottom: 20px;
+  }
+    
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .info-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .label-text {
+    font-size: 16px;
+    color: #ff8fab;
+    font-weight: 500;
+  }
+  
+  .info-text {
+    font-size: 18px;
+    color: #333;
+    margin-top: 5px;
+  }
+  
+  .card-block {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  

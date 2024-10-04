@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../Store/UserSlice';
+import './Login.css';
 
 const url = `http://localhost:3000`;
 
@@ -33,8 +34,14 @@ const Login = () => {
     }
     const validDomains = ['icloud.com', 'outlook.com', 'yahoo.com', 'gmail.com'];
     const emailParts = trimmedEmail.split('@');
-    if (emailParts.length !== 2 || emailParts[0].length === 0 || !validDomains.includes(emailParts[1])) {
-      setMessage('Email should contain a valid domain: "iCloud.com", "Outlook.com", "Yahoo.com", or "Gmail.com".');
+    if (
+      emailParts.length !== 2 ||
+      emailParts[0].length === 0 ||
+      !validDomains.includes(emailParts[1])
+    ) {
+      setMessage(
+        'Email should contain a valid domain: "iCloud.com", "Outlook.com", "Yahoo.com", or "Gmail.com".'
+      );
       setIsError(true);
       return false;
     }
@@ -70,7 +77,7 @@ const Login = () => {
 
     const userData = {
       email: trimmedEmail,
-      password: trimmedPassword
+      password: trimmedPassword,
     };
 
     if (!isLogin) {
@@ -87,7 +94,14 @@ const Login = () => {
         } else if (response.data.success) {
           setIsError(false);
           let img = response.data.user.profileImage ? response.data.user.profileImage : null;
-          dispatch(setUser({ name: response.data.user.name, email: response.data.user.email, profileImage: img, id: response.data.user._id }));
+          dispatch(
+            setUser({
+              name: response.data.user.name,
+              email: response.data.user.email,
+              profileImage: img,
+              id: response.data.user._id,
+            })
+          );
           localStorage.setItem('token', response.data.token);
           navigate('/');
         }
@@ -107,6 +121,8 @@ const Login = () => {
       }
     } catch (error) {
       console.error('Error:', error);
+      setMessage('An unexpected error occurred. Please try again.');
+      setIsError(true);
     }
   };
 
@@ -120,36 +136,64 @@ const Login = () => {
   };
 
   return (
-    <section className="vh-100 gradient-custom">
-      <div className="container py-5 h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div className="card bg-dark text-white" style={{ borderRadius: '1rem' }}>
-              <div className="card-body p-5 text-center">
-                <div className="mb-md-5 mt-md-4 pb-5">
-                  <h2 className="fw-bold mb-2 text-uppercase">{isLogin ? 'Login' : 'Sign Up'}</h2>
-                  <p className={isError ? 'text-danger' : 'text-success'}>{message}</p>
-                  {!isLogin && (
-                    <div data-mdb-input-init className="form-outline form-white mb-4">
-                      <input type="text" id="typeName" className="form-control form-control-lg" value={name} onChange={(e) => setName(e.target.value)} />
-                      <label className="form-label" htmlFor="typeName">Name</label>
-                    </div>
-                  )}
-                  <div data-mdb-input-init className="form-outline form-white mb-4">
-                    <input type="email" id="typeEmailX" className="form-control form-control-lg" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    <label className="form-label" htmlFor="typeEmailX">Email</label>
-                  </div>
-                  <div data-mdb-input-init className="form-outline form-white mb-4">
-                    <input type="password" id="typePasswordX" className="form-control form-control-lg" value={password} onChange={(e) => setPassword(e.target.value)} />
-                    <label className="form-label" htmlFor="typePasswordX">Password</label>
-                  </div>
-                  <button data-mdb-button-init data-mdb-ripple-init className="btn btn-outline-light btn-lg px-5" type="submit" onClick={handleSubmit}>{isLogin ? 'Login' : 'Sign Up'}</button>
-                </div>
-                <div>
-                  <p className="mb-0">{isLogin ? "Don't have an account? " : 'Already have an account? '}<button className="text-white-50 fw-bold btn" onClick={handleSwitch}>{isLogin ? 'Sign Up' : 'Login'}</button></p>
-                </div>
+    <section className="login-section">
+      <div className="form-container">
+        <div className="form-wrapper">
+          <h2 className="form-title">{isLogin ? 'Login' : 'Sign Up'}</h2>
+          {message && <p className={isError ? 'message error' : 'message success'}>{message}</p>}
+          <form onSubmit={handleSubmit} className="form">
+            {!isLogin && (
+              <div className="form-group">
+                <input
+                  type="text"
+                  id="typeName"
+                  className="form-input"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder=" "
+                />
+                <label className="form-label" htmlFor="typeName">
+                  Name
+                </label>
               </div>
+            )}
+            <div className="form-group">
+              <input
+                type="email"
+                id="typeEmailX"
+                className="form-input"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder=" "
+              />
+              <label className="form-label" htmlFor="typeEmailX">
+                Email
+              </label>
             </div>
+            <div className="form-group">
+              <input
+                type="password"
+                id="typePasswordX"
+                className="form-input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder=" "
+              />
+              <label className="form-label" htmlFor="typePasswordX">
+                Password
+              </label>
+            </div>
+            <button type="submit" className="submit-button">
+              {isLogin ? 'Login' : 'Sign Up'}
+            </button>
+          </form>
+          <div className="switch-section">
+            <p>
+              {isLogin ? "Don't have an account? " : 'Already have an account? '}
+              <button className="switch-button" onClick={handleSwitch}>
+                {isLogin ? 'Sign Up' : 'Login'}
+              </button>
+            </p>
           </div>
         </div>
       </div>

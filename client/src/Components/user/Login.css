@@ -1,0 +1,162 @@
+/* Login.css */
+
+/* Import a soft, girlish font */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500&display=swap');
+
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.login-section {
+  background: linear-gradient(135deg, #f8cdda 0%, #1d2b64 100%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px 60px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+}
+
+.form-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  z-index: -1;
+}
+
+.form-title {
+  font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.message {
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.message.error {
+  color: #ff6b6b;
+}
+
+.message.success {
+  color: #4caf50;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-bottom: 2px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-bottom-color 0.3s;
+}
+
+.form-input:focus {
+  border-bottom-color: #ff6b6b;
+}
+
+.form-input::placeholder {
+  color: transparent;
+}
+
+.form-label {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+  top: -10px;
+  left: 15px;
+  font-size: 0.8rem;
+  color: #ff6b6b;
+}
+
+.submit-button {
+  padding: 12px;
+  background: #ff6b6b;
+  border: none;
+  border-radius: 30px;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-weight: bold;
+}
+
+.submit-button:hover {
+  background: #ff4757;
+}
+
+.switch-section {
+  margin-top: 20px;
+}
+
+.switch-button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  padding: 0;
+}
+
+.switch-button:hover {
+  color: #ff6b6b;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 30px 20px;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+
+  .submit-button {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}

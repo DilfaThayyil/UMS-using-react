@@ -14,7 +14,7 @@ const Navbar = () => {
   }
   return (
     <>
-    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#563d7c' }}>
+    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: 'violet' }}>
       <div className="container-fluid">
         <Link to={'/'} className="navbar-brand ms-5 text-light">Home</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

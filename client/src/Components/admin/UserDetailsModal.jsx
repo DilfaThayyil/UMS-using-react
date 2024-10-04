@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
-import './UserDetailsModal.css'; // Custom CSS for styling
+import './UserDetailsModal.css';
+import { FaUser, FaEnvelope } from 'react-icons/fa'; // Import icons
 
 const url = `http://localhost:3000`;
 
@@ -21,12 +21,10 @@ const UserDetailsModal = ({ show, handleClose, user }) => {
     }
   }, [user]);
 
-  
   const handleEdit = async () => {
     try {
-     
       if (name.length < 3) {
-        setMessage('name must be at least 3 characters long.');
+        setMessage('Name must be at least 3 characters long.');
         setColor('red');
         return;
       }
@@ -52,10 +50,10 @@ const UserDetailsModal = ({ show, handleClose, user }) => {
         setColor('red');
       } else {
         setMessage(response.data.message);
-        user.email=email
-        user.name=name
+        user.email = email;
+        user.name = name;
 
-        console.log('from edit',user);
+        console.log('from edit', user);
         setColor('green');
       }
     } catch (err) {
@@ -69,7 +67,7 @@ const UserDetailsModal = ({ show, handleClose, user }) => {
   };
 
   return (
-    <Modal show={show} onHide={handleCloseModal} centered>
+    <Modal show={show} onHide={handleCloseModal} centered className="girly-modal">
       <Modal.Header closeButton>
         <Modal.Title>User Details</Modal.Title>
       </Modal.Header>
@@ -77,7 +75,9 @@ const UserDetailsModal = ({ show, handleClose, user }) => {
         <p style={{ color }}>{message}</p>
         <Form>
           <Form.Group className="mb-3" controlId="formName">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>
+              <FaUser className="icon" /> 
+            </Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter name"
@@ -87,10 +87,12 @@ const UserDetailsModal = ({ show, handleClose, user }) => {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formEmail">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label>
+              <FaEnvelope className="icon" /> 
+            </Form.Label>
             <Form.Control
               type="email"
-              placeholder="name@example.com"
+              placeholder="Enter email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-control-stylish"

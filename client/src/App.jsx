@@ -1,3 +1,4 @@
+import './index.css'
 import React, { useEffect } from 'react';
 import { Routes, Route,useNavigate } from 'react-router-dom';
 import Login from './pages/Login';

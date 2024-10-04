@@ -1,0 +1,183 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f0f8;
+}
+
+.admin-home-container {
+  padding: 20px;
+}
+
+.table-wrapper {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.table-title {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+  padding: 20px;
+  border-radius: 15px 15px 0 0;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.table-title h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.8rem;
+}
+
+.table-title .btn {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.btn-logout {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  transition: background 0.3s ease;
+}
+
+.btn-logout:hover {
+  background-color: #ff4757;
+}
+
+.btn-create {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 10px;
+  transition: background 0.3s ease;
+}
+
+.btn-create:hover {
+  background-color: #ff4757;
+}
+
+.search-input {
+  max-width: 250px;
+  border-radius: 25px;
+  padding: 10px 20px;
+  border: 1px solid #ffb6c1;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #ff69b4;
+  box-shadow: none;
+}
+
+/* Table Styling */
+.girlish-table th {
+  background-color: #ffe6f0;
+  color: #ff69b4;
+  border-bottom: 2px solid #ffb6c1;
+}
+
+.girlish-table tbody tr:nth-child(odd) {
+  background-color: #fff0f5;
+}
+
+.girlish-table tbody tr:hover {
+  background-color: #ffe6f0;
+  transition: background-color 0.3s ease;
+}
+
+.girlish-table .avatar {
+  width: 40px; /* Adjust the width as needed */
+  height: 40px; /* Adjust the height as needed */
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ff69b4;
+}
+
+.user-name {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: #333;
+}
+
+.user-name img {
+  margin-right: 10px;
+}
+
+/* Action Icons */
+.action-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.action-icon:hover {
+  color: #ff69b4;
+}
+
+.delete-icon:hover {
+  color: #ff4757;
+}
+
+/* Logout Button Icon */
+.btn-logout i {
+  margin-right: 5px;
+}
+
+/* Create Button Icon */
+.btn-create i {
+  margin-right: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .table-title .row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .table-title .col-sm-6 {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: none;
+  }
+
+  .girlish-table th,
+  .girlish-table td {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .action-icon {
+    font-size: 1.2rem;
+  }
+}
+
+/* Add floral decorations to the table title */
+.table-title {
+    position: relative;
+  }
+  
+  .table-title::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: url('/images/floral-pattern.png') no-repeat center center;
+    background-size: cover;
+    opacity: 0.1;
+    border-radius: 15px;
+    z-index: -1;
+  }
+  

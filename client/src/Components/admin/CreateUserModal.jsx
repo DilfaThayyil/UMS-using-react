@@ -1,9 +1,9 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
-import './UserDetailsModal.css'; // Custom CSS for styling
+import './UserDetailsModal.css'; 
 const url = `http://localhost:3000`;
 
 const CreateUserModal = ({ show, handleClose, onUserCreated }) => {
@@ -13,16 +13,15 @@ const CreateUserModal = ({ show, handleClose, onUserCreated }) => {
   const [message, setMessage] = useState('');
   const [color, setColor] = useState('');
 
-
   useEffect(() => {
     if (!show) {
       setMessage('');
       setColor('');
     }
   }, [show]);
+
   const handleCreate = async () => {
     try {
-      // Email domain validation
       const allowedDomains = ['gmail.com', 'apple.com', 'yahoo.com', 'outlook.com'];
       const emailDomain = email.split('@')[1];
       if (!allowedDomains.includes(emailDomain)) {
@@ -32,23 +31,23 @@ const CreateUserModal = ({ show, handleClose, onUserCreated }) => {
       }
 
       if (name.length < 3) {
-        setMessage('name must be at least 3 characters long.');
+        setMessage('Name must be at least 3 characters long.');
         setColor('red');
         return;
       }
-  
+
       if (password.length < 6) {
         setMessage('Password must be at least 6 characters long.');
         setColor('red');
         return;
       }
-  
+
       if (/\s/.test(email)) {
         setMessage('Email address cannot contain spaces.');
         setColor('red');
         return;
       }
-  
+
       const response = await axios.post(`${url}/api/signup`, { name, email, password });
       console.log(response.data);
       if (response.data.error) {
@@ -69,15 +68,15 @@ const CreateUserModal = ({ show, handleClose, onUserCreated }) => {
   };
 
   return (
-    <Modal show={show} onHide={handleClose} centered>
+    <Modal show={show} onHide={handleClose} centered className="girly-modal">
       <Modal.Header closeButton>
         <Modal.Title>Create New User</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p style={{ color: color }}>{message}</p>
+        <p style={{ color }}>{message}</p>
         <Form>
           <Form.Group className="mb-3" controlId="formName">
-            <Form.Label>Name</Form.Label>
+            <Form.Label></Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter name"
@@ -87,17 +86,17 @@ const CreateUserModal = ({ show, handleClose, onUserCreated }) => {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formEmail">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label></Form.Label>
             <Form.Control
               type="email"
-              placeholder="name@example.com"
+              placeholder="Enter email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-control-stylish"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label></Form.Label>
             <Form.Control
               type="password"
               placeholder="Password"
