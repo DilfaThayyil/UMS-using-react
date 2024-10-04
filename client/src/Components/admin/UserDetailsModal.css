@@ -1,0 +1,35 @@
+.form-control-stylish {
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .modal-header {
+    background-color: #343a40;
+    color: white;
+    border-bottom: none;
+  }
+
+  .modal-title {
+    font-weight: bold;
+  }
+
+  .modal-footer {
+    border-top: none;
+  }
+
+  .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .modal-content {
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
