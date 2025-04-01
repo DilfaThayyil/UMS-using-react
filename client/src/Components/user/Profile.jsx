@@ -27,7 +27,7 @@ const Profile = () => {
     formData.append('profileImage', selectedFile);
 
     try {
-      const res = await axios.post('http://localhost:3000/api/upload', formData, {
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_BASEURL}/api/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

@@ -10,7 +10,7 @@ import AdminHome from './Components/admin/AdminHome';
 import AdminLogin from './Components/admin/AdminLogin';
 import { ProtectedRoute, PublicRoute ,AdminPublicRoute,AdminProtectedRoute} from './Components/CustomRoutes';
 import axios from 'axios';
-const url = `http://localhost:3000`;
+const url = `${import.meta.env.VITE_BACKEND_BASEURL}`;
 
 const App = () => {
   let user = localStorage.getItem('state');

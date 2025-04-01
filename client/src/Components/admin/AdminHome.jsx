@@ -7,7 +7,7 @@ import CreateUserModal from './CreateUserModal';
 import './AdminHome.css';
 import defaultImg from '../../../public/images/profile.jpg';
 
-const url = `http://localhost:3000`;
+const url = `${import.meta.env.VITE_BACKEND_BASEURL}`;
 
 const AdminHome = () => {
   const [userData, setUserData] = useState([]);

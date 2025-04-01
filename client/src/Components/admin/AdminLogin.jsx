@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminLogin.css'; // Add external CSS
 
-const url = `http://localhost:3000/admin`;
+const url = `${import.meta.env.VITE_BACKEND_BASEURL}/admin`;
 
 function AdminLogin() {
     const [email, setEmail] = useState('');

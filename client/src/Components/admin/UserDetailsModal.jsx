@@ -6,7 +6,7 @@ import axios from 'axios';
 import './UserDetailsModal.css';
 import { FaUser, FaEnvelope } from 'react-icons/fa'; // Import icons
 
-const url = `http://localhost:3000`;
+const url = `${import.meta.env.VITE_BACKEND_BASEURL}`;
 
 const UserDetailsModal = ({ show, handleClose, user }) => {
   const [name, setName] = useState('');

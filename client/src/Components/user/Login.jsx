@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../Store/UserSlice';
 import './Login.css';
 
-const url = `http://localhost:3000`;
+const url = `${import.meta.env.VITE_BACKEND_BASEURL}`;
 
 const Login = () => {
   const [name, setName] = useState('');

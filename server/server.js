@@ -8,7 +8,7 @@ const userRouter=require('./Router/userRouter')
 const adminRouter=require('./Router/adminRouter')
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://ums-using-react.vercel.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204

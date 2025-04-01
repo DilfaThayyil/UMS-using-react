@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import './UserDetailsModal.css'; 
-const url = `http://localhost:3000`;
+const url = `${import.meta.env.VITE_BACKEND_BASEURL}`;
 
 const CreateUserModal = ({ show, handleClose, onUserCreated }) => {
   const [name, setName] = useState('');
