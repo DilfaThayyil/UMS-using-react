@@ -8,7 +8,7 @@ const userRouter=require('./Router/userRouter')
 const adminRouter=require('./Router/adminRouter')
 
 app.use(cors({
-    origin: 'https://ums-using-react.vercel.app',
+    origin: process.env.FRONTENT_URL,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204
