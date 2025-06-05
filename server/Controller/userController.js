@@ -36,7 +36,7 @@ const register= async (req,res)=>{
             res.json({error:"Email already exisit"})
         }else{
             const newuser=new User({
-                name,
+                username: name,
                 email,
                 password
             })

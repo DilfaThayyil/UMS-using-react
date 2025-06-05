@@ -59,6 +59,10 @@
     background-color: #ff5c80;
   }
   
+  #file-upload {
+    display: none;
+  }
+  
   .profile-right {
     padding: 30px;
   }

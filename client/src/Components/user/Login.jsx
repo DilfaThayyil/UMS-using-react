@@ -96,7 +96,7 @@ const Login = () => {
           let img = response.data.user.profileImage ? response.data.user.profileImage : null;
           dispatch(
             setUser({
-              name: response.data.user.name,
+              username: response.data.user.username,
               email: response.data.user.email,
               profileImage: img,
               id: response.data.user._id,
