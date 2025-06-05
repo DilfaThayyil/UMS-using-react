@@ -10,7 +10,6 @@ const Profile = () => {
   const [file, setFile] = useState(null);
   const [imageURL, setImageURL] = useState('');
   const user = useSelector((state) => state.user);
-
   useEffect(() => {
     if (user.profileImage) {
       setImageURL(user.profileImage);
@@ -32,9 +31,9 @@ const Profile = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-
       setImageURL(res.data.profileImage);
-      dispatch(setUser({ name: user.name, email: user.email, profileImage: res.data.profileImage }));
+      dispatch(setUser({ username: user.username, email: user.email, profileImage: res.data.profileImage, 
+        id:user._id}));
     } catch (err) {
       console.error('Error uploading file:', err);
     }
@@ -66,7 +65,7 @@ const Profile = () => {
                 <div className="info-col">
                   <div className="info-row">
                     <p className="label-text">Name</p>
-                    <h6 className="info-text"> {user ? user.name : ''} </h6>
+                    <h6 className="info-text"> {user ? user.username : ''} </h6>
                   </div>
                   <div className="info-row">
                     <p className="label-text">Email</p>
